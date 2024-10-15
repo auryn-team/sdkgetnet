@@ -8,7 +8,7 @@ Todos os passos e processos referentes à integração com o sistema de captura 
 
 #### Composer
 ```
-$ composer require kennedymistrineirodev/sdkgetnet
+$ composer require auryn-team/sdkgetnet
 ```
 
 ### Possíveis status de resposta de uma transação
