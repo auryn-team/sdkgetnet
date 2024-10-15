@@ -79,7 +79,7 @@ class Request
      * @return mixed
      * @throws \Exception
      */
-    private function send(Getnet $credentials, $url_path, $method, $json = NULL)
+    private function send(Getnet $credentials, $url_path, $method, $json = NULL, $headers = 'Content-Type: application/json; charset=utf-8')
     {
         $curl = curl_init($this->getFullUrl($url_path));
 
@@ -87,7 +87,7 @@ class Request
             CURLOPT_CONNECTTIMEOUT => 60,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT        => 60,
-            CURLOPT_HTTPHEADER     => array('Content-Type: application/json; charset=utf-8'),
+            CURLOPT_HTTPHEADER     => array($headers),
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_SSL_VERIFYPEER => 0
         );
@@ -189,9 +189,9 @@ class Request
      * @return mixed
      * @throws Exception
      */
-    function post(Getnet $credentials, $url_path, $params)
+    function post(Getnet $credentials, $url_path, $params, $headers = 'Content-Type: application/json; charset=utf-8')
     {
-        return $this->send($credentials, $url_path, 'POST', $params);
+        return $this->send($credentials, $url_path, 'POST', $params, $headers);
     }
 
 

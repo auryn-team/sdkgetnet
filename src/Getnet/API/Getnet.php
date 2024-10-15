@@ -252,6 +252,30 @@ class Getnet
 
         return $boletoresponse;
     }
+
+    /**
+     * @param PixTransaction $transaction
+     * @return BaseResponse|PixResponse
+     */
+    public function Pix(PixTransaction $transaction)
+    {
+        try {
+            $request = new Request($this);
+            $response = $request->post($this, "/v1/payments/qrcode/pix", $transaction->toJSON(), 'Content-Type: application/json; charset=utf-8, x-qrcode-expiration-time: 1800');
+            if ($this->debug)
+                print $transaction->toJSON();
+        } catch (\Exception $e) {
+
+            $error = new BaseResponse();
+            $error->mapperJson(json_decode($e->getMessage(), true));
+
+            return $error;
+        }
+        $pixResponse = new PixResponse();
+        $pixResponse->mapperJson($response);
+        
+        return $pixResponse;
+    }
     
      /**
      * @param $org_id
