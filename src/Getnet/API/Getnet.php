@@ -254,16 +254,16 @@ class Getnet
     }
 
     /**
-     * @param PixTransaction $transaction
+     * @param PixTransaction $pixTransaction
      * @return BaseResponse|PixResponse
      */
-    public function Pix(PixTransaction $transaction)
+    public function Pix(PixTransaction $pixTransaction)
     {
         try {
             $request = new Request($this);
-            $response = $request->post($this, "/v1/payments/qrcode/pix", $transaction->toJSON(), 'Content-Type: application/json; charset=utf-8, x-qrcode-expiration-time: 1800');
+            $response = $request->post($this, "/v1/payments/qrcode/pix", $pixTransaction->toJSON(), $pixTransaction->getHeaders());
             if ($this->debug)
-                print $transaction->toJSON();
+                print $pixTransaction->toJSON();
         } catch (\Exception $e) {
 
             $error = new BaseResponse();

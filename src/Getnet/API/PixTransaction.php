@@ -22,6 +22,11 @@ class PixTransaction {
      * @var
      */
     private $customer_id;
+    /**
+     * @var
+     */
+    private $headers;
+
 
     /**
      * @return mixed
@@ -79,7 +84,22 @@ class PixTransaction {
         $this->customer_id = $customer_id;
     }
 
-        /**
+    /**
+     * @return string
+     */
+    public function getHeaders() {
+        return $this->headers;
+    }
+
+    /**
+     * @param string $headers
+     */
+    public function setHeaders($headers) {
+        $this->headers = $headers;
+    }
+
+
+    /**
      * @return string
      */
     public function toJSON() {
