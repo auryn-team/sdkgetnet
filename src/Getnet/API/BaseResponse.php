@@ -296,12 +296,27 @@ class BaseResponse implements \JsonSerializable
     public function mapperJson($json)
     {
 
-        array_walk_recursive($json, function ($value, $key) {
-
+        $flatten = function ($array, $prefix = '') use (&$flatten) {
+            $result = [];
+            foreach ($array as $key => $value) {
+                $newKey = $prefix ? "{$prefix}_{$key}" : $key;
+    
+                if (is_array($value)) {
+                    $result += $flatten($value, $newKey);
+                } else {
+                    $result[$newKey] = $value;
+                }
+            }
+            return $result;
+        };
+    
+        $flatJson = $flatten($json);
+    
+        foreach ($flatJson as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->$key = $value;
             }
-        });
+        }
 
         $this->setResponseJSON($json);
 
