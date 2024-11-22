@@ -261,7 +261,7 @@ class Getnet
     {
         try {
             $request = new Request($this);
-            $response = $request->post($this, "/v1/payments/qrcode/pix", $pixTransaction->toJSON(), $pixTransaction->getHeaders());
+            $response = $request->post($this, "/v2/payments/qrcode/pix", $pixTransaction->toJSON(), $pixTransaction->getHeaders());
             if ($this->debug)
                 print $pixTransaction->toJSON();
         } catch (\Exception $e) {

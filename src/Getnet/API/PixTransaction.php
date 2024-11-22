@@ -25,6 +25,10 @@ class PixTransaction {
     /**
      * @var
      */
+    private $idempotency_key;
+    /**
+     * @var
+     */
     private $headers;
 
 
@@ -82,6 +86,20 @@ class PixTransaction {
      */
     public function setCustomerId($customer_id) {
         $this->customer_id = $customer_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdEmpotencyKey() {
+        return $this->idempotency_key;
+    }
+
+    /**
+     * @param mixed $idempotency_key
+     */
+    public function setIdEmpotencyKey($idempotency_key) {
+        $this->idempotency_key = $idempotency_key;
     }
 
     /**
