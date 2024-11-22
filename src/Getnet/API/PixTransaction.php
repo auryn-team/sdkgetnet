@@ -26,11 +26,6 @@ class PixTransaction {
      * @var
      */
     private $idempotency_key;
-    /**
-     * @var
-     */
-    private $headers;
-
 
     /**
      * @return mixed
