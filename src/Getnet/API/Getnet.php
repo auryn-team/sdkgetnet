@@ -257,11 +257,11 @@ class Getnet
      * @param PixTransaction $pixTransaction
      * @return BaseResponse|PixResponse
      */
-    public function Pix(PixTransaction $pixTransaction)
+    public function Pix(PixTransaction $pixTransaction, $headers = 'Content-Type: application/json; charset=utf-8')
     {
         try {
             $request = new Request($this);
-            $response = $request->post($this, "/v2/payments/qrcode/pix", $pixTransaction->toJSON(), $pixTransaction->getHeaders());
+            $response = $request->post($this, "/v2/payments/qrcode/pix", $pixTransaction->toJSON(), $headers);
             if ($this->debug)
                 print $pixTransaction->toJSON();
         } catch (\Exception $e) {

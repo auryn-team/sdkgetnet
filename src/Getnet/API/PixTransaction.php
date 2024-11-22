@@ -105,24 +105,7 @@ class PixTransaction {
     /**
      * @return string
      */
-    public function getHeaders() {
-        return $this->headers;
-    }
-
-    /**
-     * @param string $headers
-     */
-    public function setHeaders($headers) {
-        $this->headers = $headers;
-    }
-
-
-    /**
-     * @return string
-     */
     public function toJSON() {
-
         return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
-
     }
 }
