@@ -257,7 +257,7 @@ class Getnet
      * @param PixTransaction $pixTransaction
      * @return BaseResponse|PixResponse
      */
-    public function Pix(PixTransaction $pixTransaction, $headers = 'Content-Type: application/json; charset=utf-8')
+    public function Pix(PixTransaction $pixTransaction, $headers = array('Content-Type: application/json; charset=utf-8'))
     {
         try {
             $request = new Request($this);

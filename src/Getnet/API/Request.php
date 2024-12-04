@@ -189,7 +189,7 @@ class Request
      * @return mixed
      * @throws Exception
      */
-    function post(Getnet $credentials, $url_path, $params, $headers = 'Content-Type: application/json; charset=utf-8')
+    function post(Getnet $credentials, $url_path, $params, $headers = array('Content-Type: application/json; charset=utf-8'))
     {
         return $this->send($credentials, $url_path, 'POST', $params, $headers);
     }
