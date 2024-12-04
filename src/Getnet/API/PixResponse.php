@@ -134,4 +134,19 @@ class PixResponse extends BaseResponse {
     public function setPspCode($psp_code) {
         $this->psp_code = $psp_code;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdEmpotencyKey() {
+        return $this->psp_code;
+    }
+
+    /**
+     * @param mixed $idempotency_key
+     * @return PixResponse
+     */
+    public function setIdEmpotencyKey($psp_code) {
+        $this->psp_code = $psp_code;
+    }
 }

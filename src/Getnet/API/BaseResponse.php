@@ -296,10 +296,10 @@ class BaseResponse implements \JsonSerializable
     public function mapperJson($json)
     {
 
-        $flatten = function ($array, $prefix = '') use (&$flatten) {
+        $flatten = function ($array) use (&$flatten) {
             $result = [];
             foreach ($array as $key => $value) {
-                $newKey = $prefix ? "{$prefix}_{$key}" : $key;
+                $newKey = $key;
     
                 if (is_array($value)) {
                     $result += $flatten($value, $newKey);
