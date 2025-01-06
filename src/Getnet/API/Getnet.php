@@ -135,16 +135,16 @@ class Getnet
      * @param Transaction $transaction
      * @return AuthorizeResponse
      */
-    public function Authorize(Transaction $transaction)
+    public function Authorize(Transaction $transaction, $headers = array('Content-Type: application/json; charset=utf-8'))
     {
         try {
 
             $request = new Request($this);
 
             if (property_exists($transaction, "debit")) {
-                $response = $request->post($this, "/v1/payments/debit", $transaction->toJSON());
+                $response = $request->post($this, "/v1/payments/debit", $transaction->toJSON(), $headers);
             } elseif (property_exists($transaction, "credit")) {
-                $response = $request->post($this, "/v1/payments/credit", $transaction->toJSON());
+                $response = $request->post($this, "/v1/payments/credit", $transaction->toJSON(), $headers);
             }
             if ($this->debug)
                 print $transaction->toJSON();
